@@ -11,7 +11,12 @@
 
  . Para mover um arquivo usamos o comando mv + nome do arquivo + nome do repositorio que deseja enviar o arquivo. Se o repositorio desejado nao estiver no mesmo repositorio que o arquivo, precisamos descrever o caminho até o repositorio desejado. ex: mv arquivo.txt /home/meupc/aulatrybe.
 
- .
+ . Para apagar um repositorio vazio usamos rmdir + nome do repositorio.
+ 
+ . Para apagar um diretorio com algum arquivo dentro, usamos rm -rf, porem precisamos tomar muito cuidado com esse comando, para nao apagar nada indesejado.
 
+. Para vizualizar o caminho completo ate o repositorio atual usamos pwd.
+
+ 
 
 # Manipulação e Busca.
