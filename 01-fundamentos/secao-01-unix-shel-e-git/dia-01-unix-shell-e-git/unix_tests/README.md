@@ -16,7 +16,3 @@
  . Para apagar um diretorio com algum arquivo dentro, usamos rm -rf, porem precisamos tomar muito cuidado com esse comando, para nao apagar nada indesejado.
 
 . Para vizualizar o caminho completo ate o repositorio atual usamos pwd.
-
- 
-
-# Manipulação e Busca.
