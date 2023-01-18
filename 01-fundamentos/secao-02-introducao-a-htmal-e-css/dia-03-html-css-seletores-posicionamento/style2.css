@@ -1,0 +1,18 @@
+.header, p{
+    display: flex;
+    flex-direction: column ;
+    text-align: center;
+}
+li{
+    margin-bottom: 10px;
+}
+li:hover{
+    background-color: orange;
+}
+li:active{
+    color: white;
+    font-family: monospace;
+}
+.list{
+    list-style: none;
+}
