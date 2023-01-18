@@ -1,0 +1,29 @@
+.all-div{
+    border: solid black;
+    padding-left: 30px;
+}
+
+.div-number-one{
+    background-color: yellow;
+}
+
+.div-number-two{
+    background-color: green;
+}
+
+.div-number-three{
+    background-color: blueviolet;
+    font-size: 30px;
+}
+
+.div-number-four{
+    background-color: darkblue;  
+}
+
+.div-number-five{
+    background-color: aquamarine;
+}
+
+.impar{
+    font-style: italic;
+}
