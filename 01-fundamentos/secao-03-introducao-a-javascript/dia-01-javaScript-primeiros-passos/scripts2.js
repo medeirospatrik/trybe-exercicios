@@ -15,6 +15,8 @@ let modulo = a % b ;
 
 let peça = 'cavalo'.toLowerCase();
 
+let notaCarlos = 75 
+
 console.log(adição)
 console.log(subtração)
 console.log(multiplicação)
@@ -66,3 +68,9 @@ switch(peça){
 }
 
 
+if (notaCarlos >= 90){
+    notaCarlos = "A"
+
+}else if(notaCarlos >= 80){
+    notaCarlos = 'B'
+}
