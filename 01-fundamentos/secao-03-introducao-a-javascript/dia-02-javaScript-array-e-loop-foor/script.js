@@ -1,36 +1,48 @@
-//Para fixar, faça os próximos exercícios:
+//criando um array
+let numbers = [5, 9, 3, 19, 70, 8, 100, 2, 35, 27];
+let resultado = 0
 
-/*Obtenha o valor “Serviços” do array menu:
-Copiar
-let menu = ['Home', 'Serviços', 'Portfólio', 'Links'];
-let menuServices = ;
+//percorrendo o array
+for(let index = 0; index < numbers.length; index += 1){
+  console.log(numbers[index])
+}
 
-console.log(menuServices);
-Procure o índice do valor “Portfólio” do array menu:
-Copiar
-let menu = ['Home', 'Serviços', 'Portfólio', 'Links'];
-let indexOfPortfolio = ;
+//somando todos os numeros do array
 
-console.log(indexOfPortfolio);
-Adicione o valor “Contato” no final do array menu:
-De olho na dica 👀: Use o método .push()
+/*for(let index = 0; index < numbers.length; index += 1){
+  resultado = resultado + numbers[index]
 
-Copiar
-let menu = ['Home', 'Serviços', 'Portfólio', 'Links'];
+}*/
+//console.log(resultado)
 
-console.log(menu);*/
+// Media aritimetica dos numeros do array
 
+for(let index = 0; index < numbers.length; index += 1){
+    resultado = resultado + numbers[index]
+ 
+}
+let media = resultado / numbers.length
+console.log(`A media dos numeros do array numbers é ${media}.`)
 
-let menu = ['Home', 'Serviços', 'Portfólio', 'Links'];
-let menuServices = menu[1]
+if (media > 20 ){
+    console.log("Valor maior que 20.")
+}else{
+    console.log('Valor menor ou igual a 20')
+}
 
-console.log(menuServices);
+//Descobrindo o maior valor do array
 
+//Descobrindo o maior numero
+for(let index = 0; index < numbers.length; index += 1){
+    
+  }
 
-let indexOfPortfolio = menu.indexOf('Portfólio') ;
+  //descobrindo numero impares
+  let numbersImpar = 0
 
-console.log(indexOfPortfolio);
-
-menu.push('Contato')
-
-console.log(menu)
+  for(let index = 0; index < numbers.length; index += 1){
+        if(numbers[index] % 2 !== 0){
+            numbersImpar = numbersImpar + 1
+        }
+  }
+  console.log(`Existem ${numbersImpar} numeros impares no array numbers`)
