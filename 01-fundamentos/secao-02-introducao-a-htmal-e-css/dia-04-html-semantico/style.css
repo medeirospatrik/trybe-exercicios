@@ -1,0 +1,49 @@
+ 
+ .title{
+    text-align: center;
+  }
+
+  li{
+    display: inline-block;
+    text-align: center;
+  }
+
+  .first {
+    background-color: rgb(235, 200, 84);
+    font-size: 20px;
+    height: 50px;
+    text-align: center;
+    width: 200px;
+    margin-left: 320px;
+  }
+
+  .second {
+    background-color: rgb(219, 219, 219);
+    font-size: 20px;
+    height: 50px;
+    text-align: center;
+    width: 300px;
+    margin-left: 100px;
+  }
+
+  .third {
+    background-color: rgb(170, 142, 106);
+    font-size: 20px;
+    height: 50px;
+    text-align: center;
+    width: 300px;
+  }
+
+  .award ul{
+    margin-left: 90px;
+  }
+
+  .footer{
+    font-size: 16px;
+    background-color: #c6dadc;
+    text-align: center;
+    color: #3e4854;
+    padding: 8px;
+    margin-top: 40px;
+  }
+
