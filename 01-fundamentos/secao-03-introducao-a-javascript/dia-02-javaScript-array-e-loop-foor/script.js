@@ -51,3 +51,29 @@ for(let index = 0; index < numbers.length; index += 1){
         }
   }
   console.log(`Existem ${numbersImpar} numeros impares no array numbers`)
+
+  //Descobrindo o menor numero do array
+
+  let menorNumero = numbers[0]
+
+  for(let index = 0; index < numbers.length; index += 1){
+    if (menorNumero > numbers[index]){
+      menorNumero = numbers[index]
+    }
+
+  }
+  console.log(`O menor numero do array number é  ${menorNumero}`)
+
+  //Utilizando for, crie um array que vá de 1 até 25 e imprima o resultado;
+  let newArray = []
+  let result = 0
+  for(let index = 0; index < 25; index += 1){
+   newArray[index]= index +1;
+  }
+  console.log(newArray)
+
+  for(let index = 0; index < newArray.length; index += 1){
+    result = newArray[index] / 2;
+
+  console.log(result)
+  }
