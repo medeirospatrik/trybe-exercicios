@@ -55,8 +55,20 @@ for(let index =2; index <= 50; index += 1){
  }
  
  } 
-
- console.log(`os numeros primos entre 2 e 50 são ${numerosPrimos}`)
  
-console.log(`O maior numero primo entre 2 e 50 é ${maiorNumero}`);
-  
+console.log('O maior numero primo entre 2 e 50 é: ' + maiorNumero)
+
+//Exercicios bonus
+let n = 6
+
+let imputLine = ''
+
+let asterisk = '*'
+
+
+for(index = 0; index <n; index +=1){
+    imputLine = imputLine + asterisk
+}
+for(let index = 1; index <= n; index += 1){
+    console.log(imputLine)
+}
