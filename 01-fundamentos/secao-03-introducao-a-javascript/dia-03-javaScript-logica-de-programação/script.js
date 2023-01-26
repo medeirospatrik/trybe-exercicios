@@ -73,12 +73,30 @@ console.log('O maior numero primo entre 2 e 50 é: ' + maiorNumero)
 //     console.log(imputLine)
 // }
 
-let n = 10
-let imputLine =' '
+// let n = 10
+// let imputLine =''
+// let asterisk = '*'
+
+// for(index = 0; index < n; index += 1 ){
+// imputLine = imputLine + asterisk
+// console.log(imputLine);
+
+// }
+
+let n = 5
+let imputLine =''
 let asterisk = '*'
+let imputPosition = n
 
-for(index = 0; index < n; index += 1 ){
-imputLine = imputLine + asterisk
-console.log(imputLine);
-
+for(index = 0; index <= n; index += 1 ){
+    for(let columIndex = 0; columIndex < n; columIndex +=1){
+        if(columIndex < imputPosition){
+            imputLine = imputLine + ' '
+        }else{
+            imputLine = imputLine + asterisk
+        }
+    }
+    console.log(imputLine);
+    imputLine = ' '
+    imputPosition -=1;
 }
