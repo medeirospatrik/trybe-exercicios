@@ -23,3 +23,5 @@ createTag('section', 'filhoDoFilho',son, "flamengo")
 createTag('section','neto',sonOfSon)
 
 console.log(document.querySelector('.neto').parentElement.nextElementSibling.nextElementSibling)
+
+let elementoOnde = document.querySelector('')

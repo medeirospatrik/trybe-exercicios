@@ -29,3 +29,25 @@ Crie um irmão para elementoOndeVoceEsta.
 Crie um filho para elementoOndeVoceEsta.
 Crie um filho para primeiroFilhoDoFilho.
 A partir desse filho criado, acesse terceiroFilho.
+
+# Para praticar:
+
+Copiar
+<main id="paiDoPai">
+    <section id="pai">
+      <section id="primeiroFilho">
+        <h2>Primeiro Filho</h2>
+      </section>
+      <section id="elementoOndeVoceEsta">
+        <h2>Elemento que você deve remover</h2>
+      </section>
+      <section id="terceiroFilho">
+        <h2>Terceiro Filho</h2>
+      </section>
+      <section id="quartoEUltimoFilho">
+        <h2>Quarto Filho</h2>
+      </section>
+    </section>
+  </main>
+  
+Remova a tag h2, filha do elemento elementoOndeVoceEsta.
