@@ -1,0 +1,16 @@
+main {
+    text-align: center;
+    display: flex;
+    gap: 40px;
+    justify-content: center;
+}
+section {
+    width: 200px;
+}
+li {
+    background-color: aquamarine;
+    list-style: none;
+    border: solid 1px ;
+    border-radius: 4px;
+    padding: 5px;
+}
