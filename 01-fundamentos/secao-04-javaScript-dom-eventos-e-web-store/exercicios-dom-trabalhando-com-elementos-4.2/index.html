@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Exercício</title>
+    <style>
+      section {
+        border-color: black;
+        border-style: solid;
+      }
+
+      .title {
+        text-align: center;
+      }
+
+      .main-content {
+        background-color: yellow;
+      }
+
+      .main-content .center-content {
+        background-color: red;
+        width: 50%;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .main-content .center-content p {
+        font-style: italic;
+      }
+
+      .main-content .left-content {
+        background-color: green;
+        width: 60%;
+        margin-left: 0;
+        margin-right: auto;
+      }
+
+      .main-content .left-content .small-image {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        border-radius: 100%;
+      }
+
+      .main-content .right-content {
+        background-color: blue;
+        width: 60%;
+        margin-left: auto;
+        margin-right: 0;
+      }
+
+      .main-content .description {
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <script>
+      // COLOQUE SEU CÓDIGO AQUI
+      const criandoElementosNoBory = (tipo) => {
+        const body = document.body
+        let criate = document.createElement(tipo)
+        body.appendChild(criate)
+      }
+
+      //criado h1
+      criandoElementosNoBory('h1')
+    const title = document.querySelector('h1')
+    title.innerHTML = 'TrybeTrip - Agência de Viagens'
+    title.className = 'title'
+
+    //criando main
+    criandoElementosNoBory('main')
+    const main = document.querySelector('h1').nextElementSibling
+    main.className = 'main-content'
+
+    //criando section na main
+    const criandoSection1 = document.createElement('section');
+    main.appendChild(criandoSection1);
+    criandoSection1.className = 'center-content'
+
+    const criandoSection2 = document.createElement('section')
+    main.appendChild(criandoSection2)
+    criandoSection2.className = 'left-content'
+
+    const criandoSection3 = document.createElement('section')
+    main.appendChild(criandoSection3)
+    criandoSection3.className = 'right-content'
+
+    // criando h3 na main
+    for (let index = 1; index <=3; index += 1){
+        const createH3 = document.createElement('h3')
+        createH3.innerHTML = 'texto aqui'
+        createH3.className = 'descripition'
+        main.appendChild(createH3)
+    }
+    
+    //criando paragrafo
+    const capturandoSection = document.querySelector('.center-content')
+
+    const paragraph = document.createElement('p')
+
+    capturandoSection.appendChild(paragraph)
+
+    const capiturandoParagraph = document.querySelector('.center-content').firstChild
+    capiturandoParagraph.innerHTML = 'Se não tem as manhas não entra não.'
+
+    //criando img
+    const leftContent = document.querySelector('.left-content');
+    const createImg = document.createElement('img');
+    leftContent.appendChild(createImg)
+    const img = document.querySelector('img').src ="https://picsum.photos/200"
+    img.className = 'small-image'
+
+    // criando lista 
+    const rightContent = document.querySelector('.right-content');
+    const criandoList = document.createElement('ul');
+    rightContent.appendChild(criandoList);
+    const ulList = document.querySelector('.right-content').firstChild
+    
+
+    const arrayNumbers = ['um', 'dois', 'treis', 'quatro', 'cinco', 'seis', 'sete', 'oito', 'nove', 'dez']
+    for (let index of arrayNumbers) {
+        let numero = index
+        const lielement = document.createElement('li');
+        lielement.innerHTML = numero
+        ulList.appendChild(lielement)
+    }
+    
+    //removendo filho do main
+    main.removeChild(leftContent)
+    
+    //centralisando lista
+    rightContent.style.marginRight='auto'
+
+    //tricando cor do pai do elemento section
+    rightContent.parentElement.style.background = 'green'
+
+    let lista = document.querySelector('.right-content').firstChild
+   console.log(lista)
+   lista.lastChild.remove()
+   lista.lastChild.remove() 
+    </script>
+  </body>
+</html>
