@@ -1,0 +1,1 @@
+# Nesse exercício foi feito o suo dos flex-grow, order, align-self
