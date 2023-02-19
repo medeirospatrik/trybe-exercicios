@@ -49,4 +49,29 @@ const lesson1 = {
 
   console.log(allLessons)
 
+  const allStudents = (allLessons) => {
+    const studentsLesson1 = allLessons.lesson1.numeroEstudantes
+    const studentsLesson2 = allLessons.lesson2.numeroEstudantes
+    const studentsLesson3 = allLessons.lesson3.numeroEstudantes
+
+    return `The total number of students is: ${studentsLesson1 + studentsLesson2 + studentsLesson3}`
+  }
+
+  console.log(allStudents (allLessons));
+
+  const valueKey = (object, numberKey) => {
+    let arr = Object.values(object)
+    return arr[numberKey]
+  };
   
+  console.log(valueKey(lesson1, 0));
+
+  const verifyPair = (obj, key, value) => {
+    const entries = Object.entries(obj);
+    let isEqual = false;
+    for (let index in entries) {
+      if (entries[index][0] === key && entries[index][1] === value) isEqual = true;
+    }
+    return isEqual;
+  };
+  console.log(verifyPair(lesson2,'turno','Noite'));
