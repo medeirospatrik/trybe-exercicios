@@ -34,5 +34,4 @@ const mapString = (objectMap, string) => {
     return mapString(map, string);
   }
 
-  console.log(decode('02nvb12').length)
   module.exports = {decode, encode};
