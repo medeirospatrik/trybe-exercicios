@@ -29,12 +29,18 @@ const people = [
   
   // escreva filterPeople abaixo
 
-  const filterPeople = () => {
-    return people.filter((element) => {
-        return element.nationality === 'Australian' && element.bornIn < 2000;
-    }).map((element) => {
-        return element.name
-    })
-  };
+//   const filterPeople = () => {
+//     return people.filter((element) => {
+//         return element.nationality === 'Australian' && element.bornIn < 2000;
+//     }).map((element) => {
+//         return element.name
+//     })
+//   };
 
-  console.log(filterPeople());
+const filterPeople = (array) => {
+    return array.filter(({nationality, bornIn}) => {
+        return bornIn < 2000 && nationality === 'Australian' && bornIn > 1900
+    }).map((element,) => element.name)
+};
+
+  console.log(filterPeople(people));
