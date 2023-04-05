@@ -1,13 +1,16 @@
 import React, {Component} from "react";
 import './formulario.css';
+import InformaçoesPessoais from "./InformaçoesPessoais";
 
 class Formulario extends Component {
   state = {
     name: '',
     email: '',
-    checkbox: false,
+    nao: false,
+    sim: false,
     area: '',
     select: '',
+    file: '',
   }
 
   handleChange = ({ target }) => {
@@ -22,21 +25,23 @@ class Formulario extends Component {
   render() {
     return(
       <form action="" className="form">
-        <label htmlFor="name">
-          Nome:
-          <input type="text" name="name" id="name" onChange={this.handleChange} value={this.state.name}/>
-        </label>  
-        
-        <label htmlFor="">
-        email:
-        <input type="email" name="email" id="email" onChange={this.handleChange} value={this.state.email}/>
-        </label>
 
-        <label htmlFor="check">
-          cliqu aqui
-        <input type="checkbox" name="checkbox" id="check" value={this.state.check} onChange={this.handleChange} />
-        </label>
+      <InformaçoesPessoais handleChange={this.handleChange} value={this.state}/>
 
+      <fieldset name="flamenguista">
+          <legend>É flamenguista?</legend>
+        <label htmlFor="sim">
+          Sim
+        <input type="checkbox" name="sim" id="sim" value={this.state.check} onChange={this.handleChange} />
+        </label>
+        <label htmlFor="nao">
+          nao
+        <input type="checkbox" name="nao" id="nao" value={this.state.check} onChange={this.handleChange} />
+        </label>
+        </fieldset>
+
+        <fieldset name="conhece">
+          <legend>Qual dessas pessoas voce conhece?</legend>
         <label htmlFor="selecionar">
           <select name="select" id="slecionar" onChange={this.handleChange} value={this.state.select}>
             <option value="Patrik">Patrik</option>
@@ -44,8 +49,19 @@ class Formulario extends Component {
             <option value="Priscila">Priscila</option>
           </select>
         </label>
+        </fieldset>
 
-        <label htmlFor="area">
+        <fieldset>
+          <legend>Mande uma foto sua com essa pessoa</legend>
+        <label htmlFor="">
+          Desenha um "arcoiru" <br />
+        <input type="file" />
+
+        </label>
+        </fieldset>
+        <fieldset>
+          <legend>Oque voce acha dessa pessoa?</legend>
+        <label htmlFor="area" value={this.state.file} onChange={this.handleChange}>
           <textarea 
           name="area" 
           id="area" 
@@ -55,6 +71,8 @@ class Formulario extends Component {
           value={this.state.area}></textarea>
           
         </label>
+        </fieldset>
+        
       </form>
     )
   }
