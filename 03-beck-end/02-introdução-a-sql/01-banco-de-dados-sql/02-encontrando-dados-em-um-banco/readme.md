@@ -1,6 +1,6 @@
-Exercício 1: Faça as atividades de 1 a 15.
+# Exercício 1: Faça as atividades de 1 a 15.
 
-Para realizar as atividades da 1 a 15, restaure o seguinte banco de dados:
+## Para realizar as atividades da 1 a 15, restaure o seguinte banco de dados:
 
 Copiar
 -- Exclui o banco de dados Scientists caso já exista
@@ -111,3 +111,123 @@ Esse banco de dados é de uso livre, sendo licenciado de acordo com os termos de
 14 - Escreva uma query para exibir todas as informações dos cinco projetos com a menor quantidade de horas.
 
 15 - Escreva uma query que exiba a string “Existem Number cientistas na tabela Scientists.”, em que Number se refira a quantidade de cientistas.
+
+## Solução
+
+### 1 - Escreva uma query para exibir a string “This is SQL Exercise, Practice and Solution”.
+SELECT 'This is SQL Exercise, Practice and Solution';
+### 2 - Escreva uma query para exibir três números em três colunas.
+SELECT 22 AS 'NUMERO 1', 50 AS 'NUMERO 2', 94 AS 'NUMERO 3';
+## 3 - Escreva uma query para exibir a soma dos números 10 e 15.
+SELECT 10 + 15 AS 'SOMA';
+## 4 - Escreva uma query para exibir o resultado de uma expressão aritmética qualquer.
+SELECT  90 / (190 * 2) AS IMC;
+## 6 - Escreva uma query para exibir o nome como “Nome do Projeto” e as horas como “Tempo de Trabalho” de cada projeto.
+SELECT Name as 'Nome do Projeto', Hours as 'Tempo de Trabalho' FROM Projects;
+## 7 - Escreva uma query para exibir o nome dos cientistas em ordem alfabética.
+SELECT Name from Scientists ORDER BY Name;
+## 8 - Escreva uma query para exibir o nome dos projetos em ordem alfabética descendente.
+SELECT Name from Projects ORDER BY Name desc;
+## 9 - Escreva uma query que exiba a string “O projeto Name precisou de Hours horas para ser concluído.” para cada projeto.
+SELECT CONCAT('O projeto', " ", Name, 'precisou de ', " ", Hours, " ", 'para ser concluido') FROM Projects;
+## 10 - Escreva uma query para exibir o nome e as horas dos três projetos com a maior quantidade de horas.
+SELECT Name as 'nome do projeto', Hours as "horas de projeto" FROM Projects order by Hours desc limit 3;
+## 11 - Escreva uma query para exibir o código de todos os projetos da tabela AssignedTo sem que haja repetições.
+SELECT distinct Project FROM AssignedTo;
+## 12 - Escreva uma query para exibir o nome do projeto com maior quantidade de horas.
+SELECT Name as 'Nome do projeto com mais horas' from Projects order by Hours desc limit 1;
+## 13- Escreva uma query para exibir o nome do segundo projeto com menor quantidade de horas.
+SELECT Name as 'Nome do segundo projeto com menor quantidade horas' FROM Projects order by Hours limit 1 offset 1;
+## 14 - Escreva uma query para exibir todas as informações dos cinco projetos com a menor quantidade de horas.
+SELECT Name as 'Nome dos 5 projetos com menor quantidade de horas' FROM Projects order by Hours limit 5;
+## 15 - Escreva uma query que exiba a string “Existem Number cientistas na tabela Scientists.”, em que Number se refira a quantidade de cientistas.
+SELECT 	CONCAT('existem', ' ', COUNT(Name), ' ', 'cientistas na tabela Scientists.') FROM Scientists;
+
+# Exercícios - bônus
+## Exercício 2: Para realizar as tarefas do 1 ao 5, restaure o seguinte banco de dados:
+
+Copiar
+-- Exclui o banco de dados caso já exista
+DROP SCHEMA IF EXISTS PiecesProviders;
+
+-- Cria o banco PiecesProviders
+CREATE SCHEMA PiecesProviders;
+USE PiecesProviders;
+
+-- Cria a tabela Pieces
+CREATE TABLE Pieces (
+  Code INTEGER PRIMARY KEY NOT NULL,
+  Name TEXT NOT NULL
+);
+
+-- Cria a tabela Providers
+CREATE TABLE Providers (
+  Code VARCHAR(40) PRIMARY KEY NOT NULL,
+  Name TEXT NOT NULL
+);
+
+-- Cria a tabela Provides
+CREATE TABLE Provides (
+  Piece INTEGER,
+  FOREIGN KEY (Piece) REFERENCES Pieces (Code),
+  Provider VARCHAR(40),
+  FOREIGN KEY (Provider) REFERENCES Providers (Code),
+  Price INTEGER NOT NULL,
+  PRIMARY KEY (Piece , Provider)
+);
+
+-- Insere valores na tabela Providers
+INSERT INTO Providers(Code, Name)
+  VALUES ('HAL', 'Clarke Enterprises'),
+    ('RBT', 'Susan Calvin Corp.'),
+    ('TNBC', 'Skellington Supplies');
+
+-- Insere valores na tabela Pieces
+INSERT INTO Pieces(Code, Name)
+  VALUES (1, 'Sprocket'),
+    (2, 'Screw'),
+    (3, 'Nut'),
+    (4, 'Bolt');
+
+-- Insere valores na tabela Provides
+INSERT INTO Provides(Piece, Provider, Price)
+  VALUES (1, 'HAL', 10),
+    (1, 'RBT', 15),
+    (2, 'HAL', 20),
+    (2, 'RBT', 25),
+    (2, 'TNBC', 14),
+    (3, 'RBT', 50),
+    (3, 'TNBC', 45),
+    (4, 'HAL', 5),
+    (4, 'RBT', 7);
+Esse banco de dados é de uso livre, sendo licenciado de acordo com os termos deste link.
+
+Escreva uma query para exibir a peça e o preço de tudo que é provido pela empresa RBT.
+Escreva uma query para exibir todas as informações das cinco peças com os maiores preços.
+Escreva uma query para exibir o nome das empresas e o preço das quatro peças com os maiores preços, começando a lista a partir do 3º item.
+Escreva uma query para exibir todas as informações das peças que são providas pela empresa HAL. Ordene o resultado pelos preços das peças de forma decrescente.
+Escreva uma query para exibir por quantas empresas a peça 1 é provida.
+
+## soluçao exercicio 2
+
+use PiecesProviders;
+-- 1. Escreva uma query para exibir a peça e o preço de tudo que é provido pela empresa RBT.
+SELECT * FROM Provides;
+SELECT Piece, Price From Provides where Provider = 'RBT';
+-- 2. Escreva uma query para exibir todas as informações das cinco peças com os maiores preços.
+SELECT * From Provides ORDER BY Price desc limit 5;
+-- 3. Escreva uma query para exibir o nome das empresas e o preço das quatro peças com os maiores preços, começando a lista a partir do 3º item.
+SELECT Provider as 'nomde da empresa', Price as 'preço' From Provides ORDER BY Price desc limit 4 offset 2;
+-- 4. Escreva uma query para exibir todas as informações das peças que são providas pela empresa HAL. Ordene o resultado pelos preços das peças de forma decrescente.
+SELECT * fROM Provides where Provider = 'HAL' ORDER BY Price desc;
+-- 5. Escreva uma query para exibir por quantas empresas a peça 1 é provida.
+SELECT count(Provider) FROM Provides where Piece = 1;
+
+
+Exercício 3: Usando WHERE, faça os exercícios deste link.
+
+Exercício 4: Aplicando restrições, faça os exercícios deste link.
+
+Exercício 5: Estude e faça os exercícios das páginas “What is SQL?”, “Table Basics” e “Selecting Data” deste link.
+
+Exercício 6: Exercícios de comparação de valores. Faça os exercícios deste link.
