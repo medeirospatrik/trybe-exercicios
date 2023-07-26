@@ -1,12 +1,19 @@
-const express = require('express');
-const films = require('./data/movies.json');
+const app = require('./app.js')
+const fs = require('fs').promises
 
-const app = express();
+const read = async () => {
+  try {
+    const movies = await fs.readFile('src/data/movies.json', 'utf-8');
+    return JSON.parse(movies);
+  } catch (err) {
+    console.log('Nao consegui ler o arquivo')
+  }
+}
 
-app.use(express.json())
+read();
 
-app.get('/', (req, res) => {
-  res.send(films)
-})
+// app.get('/', (req, res) => {
+//   res.send()
+// })
 
 app.listen('3000', () => console.log('estou rodando'))
