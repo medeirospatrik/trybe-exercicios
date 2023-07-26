@@ -10,10 +10,19 @@ const read = async () => {
   }
 }
 
-read();
+app.get('/movies/:id', async (req, res) => {
+  const { id } = req.params;
 
-// app.get('/', (req, res) => {
-//   res.send()
-// })
+  const movies = await read()
+
+  const unicMovie = await movies.find((movie) => movie.id === Number(id))
+
+  res.status(200).send(unicMovie)
+})
+
+app.get('/movies', async (req, res) => {
+  const movies = await read()
+  res.status(200).json(movies)
+})
 
 app.listen('3000', () => console.log('estou rodando'))
