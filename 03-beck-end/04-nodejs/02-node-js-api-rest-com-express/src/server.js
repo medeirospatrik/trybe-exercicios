@@ -14,6 +14,34 @@ const werite = (movies,newFilm) => {
   fs.writeFile('src/data/movies.json', JSON.stringify([...movies, {id: movies.length + 1, ...newFilm}]))
 }
 
+app.get('/movies/search', async (req, res) => {
+
+  try {
+
+    const { q } = req.query;
+
+    const movies = await read();
+
+  
+
+if (q) {
+
+  const filteredMovies = movies.filter((element) => element.movie.includes(q));
+
+  return res.status(200).json(filteredMovies);
+
+}
+
+res.status(200).end();
+
+  } catch (err) {
+
+    res.status(500).send({ message: err.message });
+
+  }
+
+});
+
 app.get('/movies/:id', async (req, res) => {
   const { id } = req.params;
 
@@ -70,5 +98,18 @@ app.delete('/movies/:id', async (req, res) => {
   }
   
 })
+
+// app.get('/movies/serach', async (req, res) => {
+//   const { q } = req.query;
+//   const movies = await read()
+//   if(q) {
+//     const includeQuery = movies.filter((movie) => {
+//       movie.movie.includes(q)
+//       res.send(includeQuery)
+//     })
+//   }
+  
+//   res.send([])
+// })
 
 app.listen('3000', () => console.log('estou rodando'))
