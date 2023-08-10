@@ -6,11 +6,13 @@ const movieController = new MovieController
 
 const moviesRoutes = Router();
 const moviesId = Router();
+const movieDelete = Router();
 
 moviesRoutes.get("/", movieController.index)
 moviesRoutes.post("/", movieController.create)
-moviesId.get("/", movieController.show)
+moviesId.get("/:id", movieController.show)
+movieDelete.delete("/:id", movieController.delete)
 
 
 
-module.exports = {moviesRoutes, moviesId}
+module.exports = {moviesRoutes, moviesId, movieDelete}

@@ -33,7 +33,7 @@ const routes = require('./routes')
 //   
 // })
 
-app.use(routes)
+app.use('/movies',routes)
 
 // app.post('/movies', async (req, res) => {
 //   
