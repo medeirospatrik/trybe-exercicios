@@ -1,60 +1,79 @@
-const { json } = require('sequelize');
-const BooksService = require('../service/book.service');
-
-const message404 = { message: 'Livro não encontrado!' }
+const { bookService } = require('../services');
 
 const getAll = async (req, res) => {
-  const books = await BooksService.getAll();
-  return res.status(200).json(books)
+  try {
+    const { author } = req.query;
+
+    if (!author) {
+      const books = await bookService.getAll()
+      return res.status(200).json(books)
+    } else {
+      const books = await bookService.getByAuthor(author)
+      return res.status(200).json(books)
+    }
+  } catch (error) {
+    console.log(error)
+    return res.status(500).json({ message: error.message })
+  }
 };
 
-const findById = async (req, res) => {
-  const { id } = req.params;
-  const book = await BooksService.getById(id);
-  if (!book) return res.status(404).json(message404);
-  return res.status(200).json(book)
+const getById = async (req, res) => {
+  try {
+    const { id } = req.params
+    const book = await bookService.getById(id)
+    if (!book) return res.status(404).json({ message: 'Livro não encontrado.'})
+    return res.status(200).json(book);
+  } catch (error) {
+    console.log(error);
+    return res.status(500).json({ message: error.message })
+  }
 };
 
-const createBook = async (req, res) => {
+const create = async (req, res) => {
   try {
     const { title, author, pageQuantity } = req.body;
-    const newBook = await BooksService.createBook({ title, author, pageQuantity });
+    const newBook = await bookService.create(title, author, pageQuantity )
+    if (!title || !author) {
+      return res.status(400).json({ message: 'esta faltando algum campo obrigatorio!'})
+    }
     return res.status(201).json(newBook)
   } catch (error) {
-    console.log(error.message);
-    res.status(500).json({ message: error.message });
+    console.log(error);
+    return res.status(500).json(error.message)
   }
+  
+}
 
-};
-
-const updateBook = async (req, res) => {
-  const { id } = req.params;
-  const { title, author, pageQuantity } = req.body;
-
-  const updateBook = await BooksService.updateBook(id, { title, author, pageQuantity });
-
-  if (!updateBook) return res.status(404).json(message404)
-
-  return res.status(200).json({ message: 'Livro atualizado com sucesso' });
+const update = async (req, res) => {
+  try {
+    const { title, author, pageQuantity } = req.body;
+    const { id } = req.params;
+  
+    const updateBook = await bookService.update(id, title, author, pageQuantity)
+    if (!updateBook) return res.status(404).json({ message: 'Livro nao encontrado.'})
+    return res.status(200).json('Livro atualizado com sucesso!')
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ message: error.message })
+  }
 };
 
 const remove = async (req, res) => {
-  try {
-    const { id } = req.params;
-    const book = await BooksService.remove(id);
-    if (!book) return res.status(404).json(message404);
-    return res.status(200).json({ message: 'Livro excluído com sucesso!' })
-  } catch (error) {
-    console.log(error.message)
-    return res.status(500).json({message: error.message})
-  }
-};
+ try {
+  const { id } = req.params;
+  const book = await bookService.remove(id)
+  return res.status(200).json({ message: 'Livro excluido com sucesso!' });
+ } catch (error) {
+  console.log(error);
+  return res.status(500).json({ message: error.message });
+ }
+}; 
 
 
 module.exports = {
   getAll,
-  findById,
-  createBook,
-  updateBook,
+  getById,
+  create,
+  update,
   remove,
 }
