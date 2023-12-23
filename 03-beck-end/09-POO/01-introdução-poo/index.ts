@@ -1,77 +1,5 @@
-class student {
-  private _matricula: string
-  private _nome: string
-  private _notasProva: number[]
-  private _notasTrabalho: number[]
+import Employeee from "./Employee";
 
-  constructor(m: string, n: string) {
-    this._matricula = m
-    this._nome = n
-    this._notasProva = []
-    this._notasTrabalho = []
-  }
-
-  get matricula() {
-    return this._matricula
-  }
-
-  set matricula(value: string) {
-    this._matricula = value
-  }
-
-  get nome() {
-    return this._nome
-  }
-
-  set nome(value: string) {
-    if (value.length < 3) {
-      throw new Error('O nome deve conter no mínimo 3 caracteres.');
-    }
-
-    this._nome = value
-  }
-
-  get notaProva(): number[] {
-    return this._notasProva
-  }
-
-  set notaProva(value: number[]) {
-    if (value.length > 4) {
-      throw new Error('A pessoa estudante só pode possuir 4 notas de provas.')
-    }
-    this._notasProva = value
-  }
-
-  get notaTrabalho() {
-    return this._notasTrabalho
-  }
-
-  set notaTrabalho(value: number[]) {
-    if (value.length > 2) {
-      throw new Error('A pessoa estudante só pode possuir 2 notas de trabalhos.')
-    }
-
-    this._notasTrabalho = value
-  }
-
-  somaNotas() {
-    const newArray = [...this._notasProva, ...this._notasTrabalho];
-    const total = newArray.reduce((acc, acr) => acc + acr, 0);
-    return total;
-  }
-
-  average() {
-    const totalNotas = this.somaNotas();
-    const dividendo = [...this._notasProva, this._notasTrabalho].length;
-
-    return Math.round(totalNotas / dividendo);
-  }
-}
-
-const student1 = new student('1212654654', 'Patrik');
-
-student1.notaProva = [10, 5, 8, 6];
-student1.notaTrabalho = [9, 5]
 
 class Client {
   private _name: string
@@ -186,7 +114,22 @@ const item1 = new Item('Coxinha', 5)
 
 const item2 = new Item('Cocacola 600', 6)
 
-const pedido1= new Pedido(client1, [item1, item1, item2], 'cartão')
+const pedido1 = new Pedido(client1, [item1, item1, item2], 'cartão')
 
-console.log(pedido1.items);
+
+const testeInterfaceEmployee : Employeee = {
+  registration: 'sdsdsadsadasdsada',
+  salary: 8000,
+  admissionDate: new Date('2005-11-16'),
+
+  generateRegistration() {
+    const randomStr = String(Date.now() * (Math.random() + 1)).replace(/\W/g, '');
+    return `FNC${randomStr}`
+  }
+}
+
+console.log(testeInterfaceEmployee);
+
+
+
 
