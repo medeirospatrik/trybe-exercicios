@@ -1,0 +1,7 @@
+carro
+casa
+igreja
+jacare
+ambulancia
+computador
+grama

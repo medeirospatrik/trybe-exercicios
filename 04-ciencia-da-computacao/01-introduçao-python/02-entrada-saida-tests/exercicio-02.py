@@ -1,6 +1,11 @@
 import random
 
-lista_de_palavras = ['carro', 'casa', 'igreja']
+lista_de_palavras = []
+
+with open('palavras.txt') as file:
+        lista_de_palavras = [palavra.strip() for palavra in file]
+
+
 palavra_sorteada = random.choice(lista_de_palavras)
 embaralhada = ''.join(random.sample(palavra_sorteada, len(palavra_sorteada)))
 
